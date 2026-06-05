@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 //Individual MAC Cell module
 module mac_cell #(
 	parameter DATA_WIDTH = 8,
