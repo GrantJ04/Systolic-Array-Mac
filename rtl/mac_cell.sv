@@ -9,12 +9,15 @@ module mac_cell #(
 	input logic [DATA_WIDTH*2 + $clog2(ARRAY_SIZE) - 1 : 0] accum_in,
 	input logic valid_in,
 	output logic valid_out,
-	output logic [DATA_WIDTH * 2 + $clog2(ARRAY_SIZE) - 1: 0] y_i
+	output logic [DATA_WIDTH * 2 + $clog2(ARRAY_SIZE) - 1: 0] y_i,
+	output logic [DATA_WIDTH-1:0] x_out, w_out
 	);
 	
 	logic [DATA_WIDTH * 2 - 1: 0] mult_res, mult_res_reg;
 	logic [DATA_WIDTH * 2 + $clog2(ARRAY_SIZE) - 1: 0] accum_res, mult_reg_ext;
 	logic valid_stage1;
+	logic [DATA_WIDTH-1:0] x_stage1, w_stage1;
+
 	//stage 1 (multiply)
 	always_comb begin: multiply_block
 		mult_res = w_i * x_i;
@@ -24,9 +27,13 @@ module mac_cell #(
 		if(!n_rst) begin
 			mult_res_reg <= '0;
 			valid_stage1 <= '0;
+			x_stage1 <= '0;
+			w_stage1 <= '0;
 		end else begin
 			mult_res_reg <= mult_res;
 			valid_stage1 <= valid_in;
+			x_stage1 <= x_i;
+			w_stage1 <= w_i;
 		end
 	end
 
@@ -40,9 +47,14 @@ module mac_cell #(
 		if(!n_rst) begin
 			y_i <= '0;
 			valid_out <= '0;
+			x_out <= '0;
+			w_out <= '0;
+			
 		end else begin
 			y_i <= accum_res;
 			valid_out <= valid_stage1;
+			x_out <= x_stage1;
+			w_out <= w_stage1;
 		end
 	end		
 endmodule
