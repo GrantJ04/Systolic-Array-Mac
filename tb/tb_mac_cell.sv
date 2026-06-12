@@ -57,58 +57,58 @@ module tb_mac_cell();
                 accum_in = '0;
                 valid_in = '0;
                 
-//                test_name = "RESET TEST";
-//                reset_dut();
-//                if(y_i !== 18'b0 || valid_out !== 1'b0) begin
-//                        $display("%s: Failed", test_name);
-//                end else begin
-//                        $display("%s: Passed", test_name);
-//                end
-//
-//                test_name = "SINGLE MAC TEST";
-//                reset_dut();
-//                
-//                test_vectors[0] = {1'b1, 18'd2550}; // 15 * 170 = 2550
-//
-//                x_i      = 8'b00001111;
-//                w_i      = 8'b10101010;
-//                accum_in = '0;
-//                valid_in = 1'b1;
-//
-//                @ (posedge clk);
-//		@ (posedge clk);
-//                valid_in = 1'b0;
-//                x_i      = '0;
-//                w_i      = '0;
-//
-//                @ (negedge clk); 
-//                if(y_i !== test_vectors[0].y_exp_o || valid_out !== test_vectors[0].valid_out_exp) begin
-//                        $display("%s: Failed", test_name);
-//                end else begin
-//                        $display("%s: Passed", test_name);
-//                end
-//
-//                test_name = "VALID PROPG.";
-//                reset_dut();
-//                
-//                test_vectors[1] = {1'b1, 18'b0};
-//
-//                x_i      = '0;
-//                w_i      = '0;
-//                accum_in = '0;
-//                valid_in = 1'b1;
-//
-//                @ (posedge clk);
-//		@ (posedge clk);
-//                valid_in = 1'b0;
-//
-//                @ (negedge clk);
-//                if(valid_out !== test_vectors[1].valid_out_exp) begin
-//                        $display("%s: Failed", test_name);
-//                end else begin
-//                        $display("%s: Passed", test_name);
-//                end
-//
+               test_name = "RESET TEST";
+               reset_dut();
+               if(y_i !== 18'b0 || valid_out !== 1'b0) begin
+                       $display("%s: Failed", test_name);
+               end else begin
+                       $display("%s: Passed", test_name);
+               end
+
+               test_name = "SINGLE MAC TEST";
+               reset_dut();
+               
+               test_vectors[0] = {1'b1, 18'd2550};
+
+               x_i      = 8'b00001111;
+               w_i      = 8'b10101010;
+               accum_in = '0;
+               valid_in = 1'b1;
+
+               @ (posedge clk);
+	       @(posedge clk);
+               valid_in = 1'b0;
+               x_i      = '0;
+               w_i      = '0;
+
+               @ (negedge clk); 
+               if(y_i !== test_vectors[0].y_exp_o || valid_out !== test_vectors[0].valid_out_exp) begin
+                       $display("%s: Failed", test_name);
+               end else begin
+                       $display("%s: Passed", test_name);
+               end
+
+               test_name = "VALID PROPG.";
+               reset_dut();
+               
+               test_vectors[1] = {1'b1, 18'b0};
+
+               x_i      = '0;
+               w_i      = '0;
+               accum_in = '0;
+               valid_in = 1'b1;
+
+               @(posedge clk);
+	       @(posedge clk);
+               valid_in = 1'b0;
+
+               @(negedge clk);
+               if(valid_out !== test_vectors[1].valid_out_exp) begin
+                       $display("%s: Failed", test_name);
+               end else begin
+                       $display("%s: Passed", test_name);
+               end
+
                 test_name = "B2B OPS";
                 reset_dut();
 
@@ -132,7 +132,6 @@ module tb_mac_cell();
                 x_i      = '0;
                 w_i      = '0;
                 accum_in = '0;
-                // @ (negedge clk);
 
                 if(y_i !== test_vectors[3].y_exp_o) begin
                         $display("%s: Failed", test_name);
@@ -156,8 +155,7 @@ module tb_mac_cell();
                 x_i      = '0;
                 w_i      = '0;
 
-                @ (posedge clk);
-                @ (negedge clk);
+                @(negedge clk);
 
                 if(y_i !== test_vectors[4].y_exp_o) begin
                         $display("%s: Failed", test_name);
