@@ -13,8 +13,11 @@ module mac_cell #(
 	output logic [DATA_WIDTH-1:0] x_out, w_out
 	);
 	
+	localparam ACC_WIDTH = DATA_WIDTH * 2 + $clog2(ARRAY_SIZE);
+	localparam PAD_WIDTH = $clog2(ARRAY_SIZE);//easy access sizes
+
 	logic [DATA_WIDTH * 2 - 1: 0] mult_res, mult_res_reg;
-	logic [DATA_WIDTH * 2 + $clog2(ARRAY_SIZE) - 1: 0] accum_res, mult_reg_ext;
+	logic [ACC_WIDTH-1:0] accum_res, mult_reg_ext;
 	logic valid_stage1;
 	logic [DATA_WIDTH-1:0] x_stage1, w_stage1;
 
@@ -23,7 +26,7 @@ module mac_cell #(
 		mult_res = w_i * x_i;
 	end
 
-	always_ff @(posedge clk, negedge n_rst) begin
+	always_ff @(posedge clk, negedge n_rst) begin //reg 1
 		if(!n_rst) begin
 			mult_res_reg <= '0;
 			valid_stage1 <= '0;
@@ -39,11 +42,11 @@ module mac_cell #(
 
 	//stage 2 (accumulate)
 	always_comb begin: accumulator_block
-		mult_reg_ext = {2'b0, mult_res_reg};
-		accum_res = mult_reg_ext + accum_in; //tool already accounts for needed sign ext
+		mult_reg_ext = {{PAD_WIDTH{1'b0}}, mult_res_reg};//sign extended appropriately
+		accum_res = mult_reg_ext + accum_in;
 	end
 	
-	always_ff @(posedge clk, negedge n_rst) begin
+	always_ff @(posedge clk, negedge n_rst) begin //reg 2
 		if(!n_rst) begin
 			y_i <= '0;
 			valid_out <= '0;
