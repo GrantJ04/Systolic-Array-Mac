@@ -42,3 +42,6 @@ module tb_mac_cell_array();
             .y_i(y_i),
             .valid_out(valid_out)
         );
+
+        
+endmodule

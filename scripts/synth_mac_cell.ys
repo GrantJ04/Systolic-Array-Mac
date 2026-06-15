@@ -1,0 +1,4 @@
+read_verilog -sv rtl/mac_cell.sv
+hierarchy -auto-top
+synth
+write_verilog -noattr syn_mac_cell.sv
