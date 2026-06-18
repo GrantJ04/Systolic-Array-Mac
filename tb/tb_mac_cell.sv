@@ -56,7 +56,7 @@ module tb_mac_cell();
 		w_i      = '0;
                 accum_in = '0;
                 valid_in = '0;
-                
+               $display("Starting tests..."); 
                test_name = "RESET TEST";
                reset_dut();
                if(y_i !== 18'b0 || valid_out !== 1'b0) begin
@@ -90,7 +90,7 @@ module tb_mac_cell();
 
                test_name = "VALID PROPG.";
                reset_dut();
-               
+               $display("Reset done, starting matrix test...");
                test_vectors[1] = {1'b1, 18'b0};
 
                x_i      = '0;
