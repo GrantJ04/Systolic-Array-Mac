@@ -5,11 +5,13 @@
 RTL_DIR := rtl
 TB_DIR  := tb
 
-MODULE  ?= mac_cell
-TOP     := tb_$(MODULE)
+MODULE ?= mac_cell
+TOP    := tb_$(MODULE)
 
-RTL_FILES := $(RTL_DIR)/mac_cell.sv $(RTL_DIR)/mac_cell_array.sv
-TB  := $(TB_DIR)/$(TOP).sv
+# Compile all RTL files automatically
+RTL_FILES := $(wildcard $(RTL_DIR)/*.sv)
+
+TB := $(TB_DIR)/$(TOP).sv
 
 BUILD_DIR := obj_dir
 EXEC := V$(TOP)
