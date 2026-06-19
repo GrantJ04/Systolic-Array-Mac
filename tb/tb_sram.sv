@@ -42,7 +42,7 @@ module tb_sram();
 
     initial begin
         $dumpfile("waveform.vcd");
-        $dumpvars(0, tb_mac_cell_array);
+        $dumpvars(0, tb_sram);
 
         addr = '0;
         din = '0;
@@ -52,6 +52,35 @@ module tb_sram();
         
         reset_dut();
         if(dout !== '0) $display("%s FAILED", test_name);
+
+        test_name = "WRITE AND READ TEST";
+
+        addr = 4'hC;
+        din = 8'h34;
+        we = 1;
+        @(posedge clk);
+        we = 0;
+        @(posedge clk);
+        if(dout !== 8'h34) $display("%s FAILED", test_name);
+        
+        reset_dut();
+
+
+        addr = 4'h1;
+        din = 8'h12;
+        we = 1;
+        @(posedge clk);
+        addr = 4'h4;
+        din = 8'h56;
+        @(posedge clk); //2 vals written into mem
+
+        we = 0;
+        addr = 4'h1;
+        @(posedge clk);
+        if(dout !== 8'h12) $display("%s FAILED (1)", test_name);
+        addr = 4'h4;
+        @(posedge clk);
+        if(dout !== 8'h56) $display("%s FAILED (2)", test_name);
         $finish;
     end
     

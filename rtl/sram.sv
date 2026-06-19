@@ -17,7 +17,7 @@ module sram #(
     always_ff @(posedge clk, negedge n_rst) begin
         if(!n_rst) begin
             dout <= '0;
-            //currently not resetting mem for fast optimizations, though controller MUST write before read
+            //currently not resetting mem for faster processing, though controller MUST write before read
         end else begin
             if(we) begin //write op
                 mem[addr] <= din;
