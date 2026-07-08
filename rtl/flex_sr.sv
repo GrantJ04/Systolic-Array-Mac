@@ -8,7 +8,7 @@ module flex_sr #(
     input logic n_rst,
     input logic en,
     input logic [DATA_WIDTH-1:0] data_in,
-    output logic [ARRAY_SIZE-1:0][DATA_WIDTH-1:0] parallel_out,
+    output logic [ARRAY_SIZE-1:0][DATA_WIDTH-1:0] data_out,
     output logic buffer_full
 );
     flex_counter #(.DEPTH(ARRAY_SIZE)) 
@@ -22,9 +22,9 @@ module flex_sr #(
 
     always_ff @(posedge clk, negedge n_rst) begin
         if(!n_rst) begin
-            parallel_out <= '0;
+            data_out <= '0;
         end else begin
-            parallel_out <= {parallel_out[ARRAY_SIZE-2:0], data_in};
+            data_out <= {data_out[ARRAY_SIZE-2:0], data_in};
         end
     end
 
