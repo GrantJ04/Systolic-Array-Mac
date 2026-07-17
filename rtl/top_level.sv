@@ -21,7 +21,7 @@ module top_level #(
     logic we;
     logic [DATA_WIDTH-1:0] din, dout;
 
-    assign valid_in = weight_buffer_full & input_buffer_full;
+    assign valid_in = {ARRAY_SIZE{weight_buffer_full & input_buffer_full}};
     
     flex_sr #() preload_weights (.clk(clk),.n_rst(n_rst),.en(en),.data_in(dout),.data_out(weight_buff),.buffer_full(weight_buffer_full));
     flex_sr #() preload_inputs (.clk(clk),.n_rst(n_rst),.en(en),.data_in(x_in),.data_out(input_buff),.buffer_full(input_buffer_full));
