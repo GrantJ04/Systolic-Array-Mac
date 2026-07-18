@@ -14,7 +14,7 @@ module sram_controller #(
     input logic n_rst,
     input logic start,
     input logic [DATA_WIDTH-1:0] weight_in,
-    output logic we,
+    output logic we, stream_en,
     output logic [$clog2(DEPTH)-1:0] addr,
     output logic [DATA_WIDTH-1:0] din
 );
@@ -66,5 +66,6 @@ module sram_controller #(
 
     assign we = (state == LOAD_WEIGHTS);
     assign din = weight_in;
+    assign stream_en = (state == STREAM_INPUT);
 
 endmodule
