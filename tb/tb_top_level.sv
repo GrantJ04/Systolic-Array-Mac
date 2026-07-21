@@ -66,11 +66,11 @@ module tb_top_level();
 			@(posedge clk);
 		end
 
+		repeat(20) @(posedge clk);
+
 		if(valid_out !== '1) $display("%s FAILED - valid_out", test_name);
-		
-		
-		
-				
+		if(y_i === '0) $display("%s FAILED - y_i all zeros", test_name);
+
 		$finish;	
 	end
 endmodule
