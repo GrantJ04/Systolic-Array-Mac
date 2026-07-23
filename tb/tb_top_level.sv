@@ -60,7 +60,7 @@ module tb_top_level();
 			w_in = i[7:0];
 			@(posedge clk);
 		end
-
+		
 		for(int i = 0; i < 16; i++) begin
 			x_in = i[7:0];
 			@(posedge clk);
@@ -70,7 +70,7 @@ module tb_top_level();
 
 		if(valid_out !== '1) $display("%s FAILED - valid_out", test_name);
 		if(y_i === '0) $display("%s FAILED - y_i all zeros", test_name);
-
+		
 		$finish;	
 	end
 endmodule
