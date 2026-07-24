@@ -20,8 +20,9 @@ class mac_driver extends uvm_driver #(mac_seq_item);
         forever begin
            seq_item_port.get_next_item(tr);
            @(posedge vif.clk);
-           vif.w_in = tr.w_in;
-           vif.x_in = tr.x_in;
+           vif.start <= tr.start;
+           vif.w_in <= tr.w_in;
+           vif.x_in <= tr.x_in;
            @(posedge vif.clk);
 
             seq_item_port.item_done();
