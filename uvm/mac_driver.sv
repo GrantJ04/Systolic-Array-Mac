@@ -2,7 +2,7 @@ class mac_driver extends uvm_driver #(mac_seq_item);
    
     `uvm_component_utils(mac_driver)
 
-    virtual mac_if vif;
+    virtual mac_if.driver vif;
    
     function new(string name, uvm_component parent);
         super.new(name,parent);
