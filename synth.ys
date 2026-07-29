@@ -1,10 +1,16 @@
-read_verilog -sv rtl/*.sv
-hierarchy -top top_level
-proc
-opt
-techmap
-opt
-dfflibmap -liberty /usr/share/yosys/sky130/sky130_fd_sc_hd.lib
-abc -liberty /usr/share/yosys/sky130/sky130_fd_sc_hd.lib
-opt
+# 1. Convert SystemVerilog to Verilog using sv2v
+exec -- sv2v rtl/*.sv -w build_synth.v
+
+# 2. Read the converted Verilog netlist
+read_verilog build_synth.v
+
+# 3. Generic synthesis and elaboration
+synth -top top_level
+
+# 4. Map Flip-Flops and Logic Gates to the Sky130 standard cells
+dfflibmap -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+abc -liberty sky130_fd_sc_hd__tt_025C_1v80.lib
+
+# 5. Clean up unused logic and write out netlist
+clean
 write_verilog synth_out.v
