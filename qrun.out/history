@@ -1,0 +1,9 @@
+- Entry: 1
+  Time: Wed Jul 29 16:59:20 2026
+  Command: /home/grant/questa/questa_fse/bin/../linux_x86_64/qverilog uvm/top.sv rtl/flex_counter.sv rtl/flex_sr.sv rtl/mac_cell.sv rtl/mac_cell_array.sv rtl/sram.sv rtl/sram_controller.sv rtl/top_level.sv uvm/mac_agent.sv uvm/mac_driver.sv uvm/mac_env.sv uvm/mac_if.sv uvm/mac_monitor.sv uvm/mac_scoreboard.sv uvm/mac_seq_item.sv uvm/mac_sequence.sv uvm/mac_test.sv uvm/top.sv 
+- Entry: 2
+  Time: Wed Jul 29 16:59:38 2026
+  Command: /home/grant/questa/questa_fse/bin/../linux_x86_64/qverilog uvm/top.sv uvm/mac_seq_item.sv uvm/mac_sequence.sv uvm/mac_driver.sv uvm/mac_monitor.sv uvm/mac_scoreboard.sv uvm/mac_agent.sv uvm/mac_env.sv uvm/mac_test.sv rtl/flex_counter.sv rtl/flex_sr.sv rtl/mac_cell.sv rtl/mac_cell_array.sv rtl/sram.sv rtl/sram_controller.sv rtl/top_level.sv 
+- Entry: 3
+  Time: Wed Jul 29 17:00:43 2026
+  Command: /home/grant/questa/questa_fse/bin/../linux_x86_64/qverilog uvm/top.sv uvm/mac_seq_item.sv uvm/mac_sequence.sv uvm/mac_driver.sv uvm/mac_monitor.sv uvm/mac_scoreboard.sv uvm/mac_agent.sv uvm/mac_env.sv uvm/mac_test.sv rtl/flex_counter.sv rtl/flex_sr.sv rtl/mac_cell.sv rtl/mac_cell_array.sv rtl/sram.sv rtl/sram_controller.sv rtl/top_level.sv 

@@ -1,5 +1,5 @@
 class mac_agent extends uvm_agent;
-  `uvm_component_utis(mac_agent);
+  `uvm_component_utils(mac_agent);
   
   uvm_sequencer #(mac_seq_item) sequencer;
   mac_driver driver;

@@ -1,0 +1,37 @@
+Questa Intel Starter FPGA Edition-64 qrun 2024.3 Utility 2024.09 Sep 10 2024
+Start time: 17:00:43 on Jul 29,2026
+qrun uvm/top.sv uvm/mac_seq_item.sv uvm/mac_sequence.sv uvm/mac_driver.sv uvm/mac_monitor.sv uvm/mac_scoreboard.sv uvm/mac_agent.sv uvm/mac_env.sv uvm/mac_test.sv rtl/flex_counter.sv rtl/flex_sr.sv rtl/mac_cell.sv rtl/mac_cell_array.sv rtl/sram.sv rtl/sram_controller.sv rtl/top_level.sv 
+Questa Intel Starter FPGA Edition-64 vlog 2024.3 Compiler 2024.09 Sep 10 2024
+Start time: 17:00:43 on Jul 29,2026
+vlog uvm/top.sv uvm/mac_seq_item.sv uvm/mac_sequence.sv uvm/mac_driver.sv uvm/mac_monitor.sv uvm/mac_scoreboard.sv uvm/mac_agent.sv uvm/mac_env.sv uvm/mac_test.sv rtl/flex_counter.sv rtl/flex_sr.sv rtl/mac_cell.sv rtl/mac_cell_array.sv rtl/sram.sv rtl/sram_controller.sv rtl/top_level.sv -work ./work -statslog qrun.out/stats_log -writesessionid "+qrun.out/top_dus" -csession=incr 
+** Note: (vlog-2286) uvm/top.sv(3): Using implicit +incdir+/home/grant/questa/questa_fse/uvm-1.1d/../verilog_src/uvm-1.1d/src from import uvm_pkg
+** Error: (vlog-13069) uvm/top.sv(36): near "(": syntax error, unexpected '(', expecting ::.
+** Error: uvm/mac_seq_item.sv(7): (vlog-2163) Macro `uvm_object_utils is undefined.
+** Error: (vlog-13069) uvm/mac_seq_item.sv(7): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_sequence.sv(2): (vlog-2163) Macro `uvm_object_utils is undefined.
+** Error: (vlog-13069) uvm/mac_sequence.sv(2): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_driver.sv(3): (vlog-2163) Macro `uvm_component_utils is undefined.
+** Error: (vlog-13069) uvm/mac_driver.sv(3): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_monitor.sv(2): (vlog-2163) Macro `uvm_component_utils is undefined.
+** Error: (vlog-13069) uvm/mac_monitor.sv(2): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_scoreboard.sv(3): (vlog-2163) Macro `uvm_component_utils is undefined.
+** Error: (vlog-13069) uvm/mac_scoreboard.sv(3): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_agent.sv(2): (vlog-2163) Macro `uvm_component_utils is undefined.
+** Error: (vlog-13069) uvm/mac_agent.sv(2): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_env.sv(2): (vlog-2163) Macro `uvm_component_utils is undefined.
+** Error: (vlog-13069) uvm/mac_env.sv(2): near "(": syntax error, unexpected '(', expecting function or task or   .
+** Error: uvm/mac_test.sv(10): (vlog-13530) Failed to find the name 'type_id' in scope 'mac_env' at uvm/mac_env.sv(1).
+-- Skipping rtl/flex_counter.sv
+-- Skipping rtl/flex_sr.sv
+-- Skipping rtl/mac_cell.sv
+-- Skipping rtl/mac_cell_array.sv
+-- Skipping rtl/sram.sv
+-- Skipping rtl/sram_controller.sv
+-- Skipping rtl/top_level.sv
+End time: 17:00:43 on Jul 29,2026, Elapsed time: 0:00:00
+Errors: 16, Warnings: 0
+End time: 17:00:43 on Jul 29,2026, Elapsed time: 0:00:00
+*** Summary *********************************************
+    qrun: Errors:   0, Warnings:   0
+    vlog: Errors:  16, Warnings:   0
+  Totals: Errors:  16, Warnings:   0

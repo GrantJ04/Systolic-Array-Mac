@@ -1,0 +1,10 @@
+read_verilog -sv rtl/*.sv
+hierarchy -top top_level
+proc
+opt
+techmap
+opt
+dfflibmap -liberty /usr/share/yosys/sky130/sky130_fd_sc_hd.lib
+abc -liberty /usr/share/yosys/sky130/sky130_fd_sc_hd.lib
+opt
+write_verilog synth_out.v

@@ -39,3 +39,28 @@ wave: build_wave
 
 clean:
 	rm -rf $(BUILD_DIR) $(VCD)
+
+
+# =========================
+# UVM Flow
+# =========================
+
+UVM_DIR := uvm
+UVM_FILES := $(wildcard $(UVM_DIR)/*.sv)
+UVM_TOP := top
+UVM_EXEC := V$(UVM_TOP)
+
+uvm_build:
+	verilator --binary -sv +incdir+/usr/share/verilator/include/vltstd \
+		-I/usr/share/verilator/include \
+		$(RTL_FILES) $(UVM_FILES) \
+		--top-module top \
+		--trace \
+		--Mdir $(BUILD_DIR)
+
+uvm_sim: uvm_build
+	./$(BUILD_DIR)/$(UVM_EXEC)
+	gtkwave $(VCD)
+
+uvm_run: uvm_build
+	./$(BUILD_DIR)/$(UVM_EXEC)
